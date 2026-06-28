@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform spawnBullet;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Animator animator;
+
+    [SerializeField] GameObject bow;
 
     void Update()
     {
@@ -27,8 +28,20 @@ public class Player : MonoBehaviour
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
             animator.SetTrigger("Attack");
+            Shoot();
         }
+
     }
+
+    public void Shoot()
+    {
+        Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
+    }
+
+    public void ShowBow(bool show)
+    {
+        bow.SetActive(show);
+    }
+
 }

@@ -16,10 +16,14 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        target = GameObject.FindWithTag("Home").transform;
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     void Update()
     {
+        if (life <= 0) return;
+
         Vector3 dir = player.position - transform.position;
 
         if (dir.magnitude > radius)
@@ -50,5 +54,10 @@ public class Enemy : MonoBehaviour
         speed = 0;
         animator.SetBool("Die",true);
         Destroy(gameObject,2);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position,radius);
     }
 }
