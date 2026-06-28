@@ -1018,7 +1018,11 @@ MonoBehaviour:
   target: {fileID: 0}
   player: {fileID: 0}
   speed: 3
-  radius: 4.51
+  detectionRadius: 5
+  attackRadius: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
   life: 1
 --- !u!95 &3192906412843291999
 Animator:
